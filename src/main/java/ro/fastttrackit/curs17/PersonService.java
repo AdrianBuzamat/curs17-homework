@@ -66,17 +66,32 @@ public class PersonService {
                 .collect(Collectors.toList());
         return result;
     }
-//- list all first names UNIQUELY
+
+    //- list all first names UNIQUELY
 //
 //- sort the persons by first name
-public List<Person> sortedByFirstName() {
-    List<Person> result = persons.stream()
-            .sorted(Comparator.comparing(Person::firstName))
-            .collect(Collectors.toList());
-    return result;
-}
+    public List<Person> sortedByFirstName() {
+        List<Person> result = persons.stream()
+                .sorted(Comparator.comparing(Person::firstName))
+                .collect(Collectors.toList());
+        return result;
+    }
 
-//- sort the persons by last name
-//
-//- sort the persons by first name, last name and then age
+    //- sort the persons by last name
+    public List<Person> sortedByLastName() {
+        List<Person> result = persons.stream()
+                .sorted(Comparator.comparing(Person::lastName))
+                .collect(Collectors.toList());
+        return result;
+    }
+
+    //- sort the persons by first name, last name and then age
+    public List<Person> sortedBySeveralFilters() {
+        List<Person> result = persons.stream()
+                .sorted(Comparator.comparing(Person::firstName))
+                .sorted(Comparator.comparing(Person::lastName))
+                .sorted(Comparator.comparing(Person::age))
+                .collect(Collectors.toList());
+        return result;
+    }
 }
