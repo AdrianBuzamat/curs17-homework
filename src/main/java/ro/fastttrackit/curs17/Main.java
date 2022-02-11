@@ -15,7 +15,7 @@ public class Main {
                 new Person("Alina", "Harjoghe", 12, "Oradea")
         ));
 
-        System.out.println(personService.sortedByFirstName());
+        System.out.println(personService.allFirstNamesStartingWithA());
 
 
     }
