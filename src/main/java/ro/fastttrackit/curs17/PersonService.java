@@ -90,7 +90,9 @@ public class PersonService {
 
     public List<Person> sortedBySeveralFilters() {
         return persons.stream()
-                .sorted(Comparator.comparing(Person::firstName).thenComparing(Person::lastName).thenComparing(Person::age))
+                .sorted(Comparator.comparing(Person::firstName)
+                        .thenComparing(Person::lastName)
+                        .thenComparing(Person::age))
                 .collect(Collectors.toList());
     }
 }
