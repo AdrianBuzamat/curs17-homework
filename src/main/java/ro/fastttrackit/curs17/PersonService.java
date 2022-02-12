@@ -32,7 +32,7 @@ public class PersonService {
                 .filter(person -> person.city().equalsIgnoreCase("Oradea"))
                 .collect(Collectors.toList());
     }
-    //list all persons from Oradea OR Cluj
+
     public List<Person> allPersonsFromOradeaOrCluj() {
         return persons.stream()
                 .filter(PersonService::isFromOradeaOrCluj)
@@ -50,7 +50,7 @@ public class PersonService {
                 .collect(Collectors.toList());
     }
 
-    public List<String> allFirstNamesFirstLetterLastName() {
+    public List<String> allFirstNamesWFirstLetterFLastName() {
         return persons.stream()
                 .map(person -> String.join("", person.firstName(), " ", person.lastName().substring(0, 1), "."))
                 .collect(Collectors.toList());
@@ -90,9 +90,7 @@ public class PersonService {
 
     public List<Person> sortedBySeveralFilters() {
         return persons.stream()
-                .sorted(Comparator.comparing(Person::firstName))
-                .sorted(Comparator.comparing(Person::lastName))
-                .sorted(Comparator.comparing(Person::age))
+                .sorted(Comparator.comparing(Person::firstName).thenComparing(Person::lastName).thenComparing(Person::age))
                 .collect(Collectors.toList());
     }
 }
