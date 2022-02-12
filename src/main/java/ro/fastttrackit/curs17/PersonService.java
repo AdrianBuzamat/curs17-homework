@@ -32,6 +32,17 @@ public class PersonService {
                 .filter(person -> person.city().equalsIgnoreCase("Oradea"))
                 .collect(Collectors.toList());
     }
+    //list all persons from Oradea OR Cluj
+    public List<Person> allPersonsFromOradeaOrCluj() {
+        return persons.stream()
+                .filter(PersonService::isFromOradeaOrCluj)
+                .collect(Collectors.toList());
+    }
+
+    private static boolean isFromOradeaOrCluj(Person person) {
+        return "Oradea".equalsIgnoreCase(person.city())
+                || "Cluj".equalsIgnoreCase(person.city());
+    }
 
     public List<String> allFirstNamesCapitalized() {
         return persons.stream()
@@ -58,7 +69,12 @@ public class PersonService {
                 .collect(Collectors.toList());
     }
 
-    //- list all first names UNIQUELY
+    public List<String> allDistinctFirstName() {
+        return persons.stream()
+                .map(Person::firstName)
+                .distinct()
+                .collect(Collectors.toList());
+    }
 
     public List<Person> sortedByFirstName() {
         return persons.stream()

@@ -12,10 +12,10 @@ public class Main {
                 new Person("Camelia", "Mandru", 44, "Oradea"),
                 new Person("Ana", "Margarit", 15, "Cluj"),
                 new Person("Ionut", "Pandele", 43, "Cluj"),
-                new Person("Alina", "Harjoghe", 12, "Oradea")
+                new Person("Ionut", "Harjoghe", 12, "Fetesti")
         ));
 
-        System.out.println(personService.allFirstNamesStartingWithA());
+        System.out.println(personService.allPersonsFromOradeaOrCluj());
 
 
     }
